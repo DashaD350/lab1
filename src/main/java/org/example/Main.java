@@ -19,13 +19,20 @@ class StringCalculator {
             return 0;
         }
 
-        String[] ourNumbers = numbers.split(",");
-        int sum = 0;
+        if (numbers.contains(",\\n")) {
+            System.out.println("Not correct input");
+        } else if (numbers.contains("\\n,")) {
+            System.out.println("Not correct input");
+        }  else {
+            String[] ourNumbers = numbers.split("(,)|(\\\\n)");
+            int sum = 0;
 
-        for (String num : ourNumbers) {
-            sum += Integer.parseInt(num);
+            for (String num : ourNumbers) {
+                sum += Integer.parseInt(num);
+            }
+
+            return sum;
         }
-
-        return sum;
+        return 0;
     }
 }
