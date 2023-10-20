@@ -30,8 +30,8 @@ class StringCalculator {
                 int delimiter1Start = numbers.indexOf("[");
                 int delimiter2Start = numbers.lastIndexOf("[");
                 if (delimiter1Start != delimiter2Start){
-                    String delimiter = numbers.substring(3, 7);
                     int pastDelimiterIndex = numbers.lastIndexOf("]");
+                    String delimiter = numbers.substring(3, pastDelimiterIndex);
                     String numbersSubstring = numbers.substring(pastDelimiterIndex + 3);
                     String[] delimiters = delimiter.split("]\\[");
                     for (String delim : delimiters) {
