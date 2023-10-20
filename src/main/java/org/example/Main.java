@@ -1,7 +1,5 @@
 package org.example;
 import java.util.Scanner;
-import java.util.ArrayList;
-import java.util.List;
 
 public class Main {
     public static void main(String[] args) { StringCalculator calculator = new StringCalculator();
@@ -27,80 +25,25 @@ class StringCalculator {
             System.out.println("Not correct input");
         } else {
             if (numbers.startsWith("//")) {
-                int delimiter1Start = numbers.indexOf("[");
-                int delimiter2Start = numbers.lastIndexOf("[");
-                if (delimiter1Start != delimiter2Start){
-                    int pastDelimiterIndex = numbers.lastIndexOf("]");
-                    String delimiter = numbers.substring(3, pastDelimiterIndex);
-                    String numbersSubstring = numbers.substring(pastDelimiterIndex + 3);
-                    String[] delimiters = delimiter.split("]\\[");
-                    for (String delim : delimiters) {
-                        numbersSubstring = numbersSubstring.replace(delim, ",");
-                    }
-
-                    String[] ourNumbers = numbersSubstring.split("(,)|(\\\\n)");
-                    int sum = 0;
-
-                    List <Integer> negative = new ArrayList<>();
-                    for (String num : ourNumbers) {
-                        int value = Integer.parseInt(num);
-                        if (value < 0) {
-                            negative.add(value);
-                        }else if (value <= 1000){
-                            sum += value;
-                        }
-                    }
-
-                    if (!negative.isEmpty()) {
-                        System.out.println("Negative numbers not allowed: " + negative);
-                        return 0;
-                    }
-
-                    return sum;
-                } else {
-                int preDelimiterIndex = numbers.lastIndexOf("[") + 1;
-                int pastDelimiterIndex = numbers.indexOf("]");
-                String delimiter = numbers.substring(preDelimiterIndex, pastDelimiterIndex);
-                String numbersSubstring = numbers.substring(pastDelimiterIndex + 3).replace(delimiter, ",");
+                int pastDelimiterIndex = numbers.indexOf("n");
+                String delimiter = numbers.substring(2, pastDelimiterIndex-1);
+                String numbersSubstring = numbers.substring(pastDelimiterIndex + 1).replace(delimiter, ",");
 
                 String[] ourNumbers = numbersSubstring.split("(,)|(\\\\n)");
 
                 int sum = 0;
-
-                List <Integer> negative = new ArrayList<>();
                 for (String num : ourNumbers) {
-                    int value = Integer.parseInt(num);
-                    if (value < 0) {
-                        negative.add(value);
-                    }else if (value <= 1000){
-                        sum += value;
-                    }
+                    sum += Integer.parseInt(num);
                 }
 
-                if (!negative.isEmpty()) {
-                    System.out.println("Negative numbers not allowed: " + negative);
-                    return 0;
-                }
-
-                return sum;}
+                return sum;
 
             } else
             { String[] ourNumbers = numbers.split("(,)|(\\\\n)");
                 int sum = 0;
 
-                List <Integer> negative = new ArrayList<>();
                 for (String num : ourNumbers) {
-                    int value = Integer.parseInt(num);
-                    if (value < 0) {
-                        negative.add(value);
-                    } else if (value <= 1000){
-                        sum += value;
-                    }
-                }
-
-                if (!negative.isEmpty()) {
-                    System.out.println("Negative numbers not allowed: " + negative);
-                    return 0;
+                    sum += Integer.parseInt(num);
                 }
 
                 return sum;
