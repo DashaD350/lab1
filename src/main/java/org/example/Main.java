@@ -33,7 +33,7 @@ class StringCalculator {
                 String delimiter = numbers.substring(preDelimiterIndex, pastDelimiterIndex);
                 String numbersSubstring = numbers.substring(pastDelimiterIndex + 3).replace(delimiter, ",");
 
-                String[] ourNumbers = numbersSubstring.split("(,)");
+                String[] ourNumbers = numbersSubstring.split("(,)|(\\\\n)");
 
                 int sum = 0;
 
