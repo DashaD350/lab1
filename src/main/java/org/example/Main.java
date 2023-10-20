@@ -1,5 +1,7 @@
 package org.example;
 import java.util.Scanner;
+import java.util.ArrayList;
+import java.util.List;
 
 public class Main {
     public static void main(String[] args) { StringCalculator calculator = new StringCalculator();
@@ -32,8 +34,19 @@ class StringCalculator {
                 String[] ourNumbers = numbersSubstring.split("(,)|(\\\\n)");
 
                 int sum = 0;
+
+                List <Integer> negative = new ArrayList<>();
                 for (String num : ourNumbers) {
-                    sum += Integer.parseInt(num);
+                    int value = Integer.parseInt(num);
+                    if (value < 0) {
+                        negative.add(value);
+                    }
+                    sum += value;
+                }
+
+                if (!negative.isEmpty()) {
+                    System.out.println("Negative numbers not allowed: " + negative);
+                    return 0;
                 }
 
                 return sum;
@@ -42,8 +55,18 @@ class StringCalculator {
             { String[] ourNumbers = numbers.split("(,)|(\\\\n)");
                 int sum = 0;
 
+                List <Integer> negative = new ArrayList<>();
                 for (String num : ourNumbers) {
-                    sum += Integer.parseInt(num);
+                    int value = Integer.parseInt(num);
+                    if (value < 0) {
+                        negative.add(value);
+                    }
+                    sum += value;
+                }
+
+                if (!negative.isEmpty()) {
+                    System.out.println("Negative numbers not allowed: " + negative);
+                    return 0;
                 }
 
                 return sum;
