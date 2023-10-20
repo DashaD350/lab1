@@ -40,8 +40,9 @@ class StringCalculator {
                     int value = Integer.parseInt(num);
                     if (value < 0) {
                         negative.add(value);
+                    }else if (value <= 1000){
+                        sum += value;
                     }
-                    sum += value;
                 }
 
                 if (!negative.isEmpty()) {
@@ -60,8 +61,9 @@ class StringCalculator {
                     int value = Integer.parseInt(num);
                     if (value < 0) {
                         negative.add(value);
+                    } else if (value <= 1000){
+                        sum += value;
                     }
-                    sum += value;
                 }
 
                 if (!negative.isEmpty()) {
