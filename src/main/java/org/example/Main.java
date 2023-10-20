@@ -27,11 +27,13 @@ class StringCalculator {
             System.out.println("Not correct input");
         } else {
             if (numbers.startsWith("//")) {
-                int pastDelimiterIndex = numbers.indexOf("n");
-                String delimiter = numbers.substring(2, pastDelimiterIndex-1);
-                String numbersSubstring = numbers.substring(pastDelimiterIndex + 1);
+                int preDelimiterIndex = numbers.lastIndexOf("[") + 1;
+                /*String newlineSymbol ="\\n";*/
+                int pastDelimiterIndex = numbers.indexOf("]");
+                String delimiter = numbers.substring(preDelimiterIndex, pastDelimiterIndex);
+                String numbersSubstring = numbers.substring(pastDelimiterIndex + 3).replace(delimiter, ",");
 
-                String[] ourNumbers = numbersSubstring.split(delimiter);
+                String[] ourNumbers = numbersSubstring.split("(,)");
 
                 int sum = 0;
 
